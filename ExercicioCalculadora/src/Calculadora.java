@@ -13,7 +13,7 @@ public class Calculadora implements ICalculadora{
 
 	@Override
 	public double raizQuadrada(String n1) {
-		return Double.parseDouble(n1) * Double.parseDouble(n1);
+		return Math.sqrt(Double.parseDouble(n1));
 	}
 
 }
