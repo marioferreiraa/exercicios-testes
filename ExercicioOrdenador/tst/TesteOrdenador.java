@@ -44,7 +44,7 @@ public class TesteOrdenador {
 		assertEquals(30.1, o.maiorValor);
 	}
 	
-	@Test
+	@Test(expected = NullPointerException.class)
 	public void testarInserindoCollectionNulo() {
 		//Agir
 		o.inserirColecao(null);
@@ -335,7 +335,7 @@ public class TesteOrdenador {
 		o.inserirColecao(colecao);
 	}
 	
-	@Test 
+	@Test(expected = NullPointerException.class)
 	public void testarGetValorMedioInserindoDadosNulos() {
 		//Arranjar
 		Collection<String> colecao = null;
@@ -357,7 +357,117 @@ public class TesteOrdenador {
 		o.informarValor(valAleatorio);
 		
 		//Afirmar
-		assertNotEquals(4, o.valorMedio);
+		assertNotEquals(4, o.getValorMedio());
+	}
+	
+	@Test
+	public void testarGetValorMedianoInserindoCollectionComSizeImpar() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("3");
+		colecao.add("4");
+		colecao.add("5");
+		
+		//Agir
+		o.inserirColecao(colecao);
+		
+		//Afirmar
+		assertEquals(4, o.getValorMediano());
+	}
+	
+	@Ignore
+	public void testarGetValorMedianoInserindoMaisParametrosSizeImpar() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("1");
+		colecao.add("2");
+		colecao.add("3");
+		colecao.add("4");
+		colecao.add("5");
+		colecao.add("6");
+		colecao.add("7");
+		colecao.add("8");
+		colecao.add("9");
+		
+		//Agir
+		o.inserirColecao(colecao);
+		
+		//Afirmar
+		assertEquals(5, o.getValorMediano());
+	}
+	
+	@Test
+	public void testarGetValorMedianoInserindoVariosDadosSizePar() {
+		//Arrumar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("2");
+		colecao.add("4");
+		colecao.add("6");
+		colecao.add("8");
+		
+		//Agir
+		o.inserirColecao(colecao);
+		
+		//Afirmar
+		assertEquals(5, o.getValorMediano());
+	}
+	
+	@Test
+	public void testarGetValorMedianoInserindoCollectionComSizePar() {
+		//Arrumar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("2");
+		colecao.add("4");
+		colecao.add("6");
+		colecao.add("35");
+		colecao.add("12");
+		colecao.add("7");
+		colecao.add("9.1");
+		colecao.add("26");
+		
+		//Agir
+		o.inserirColecao(colecao);
+		
+		//Afirmar
+		assertEquals(23.5, o.getValorMediano());
+	}
+	
+	@Test
+	public void testarGetValorMedianoInserindoValoresInvalidos() {
+		//Arrumar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("2");
+		colecao.add("4");
+		colecao.add("c");
+		colecao.add("35");
+		
+		//Agir
+		o.inserirColecao(colecao);
+	}
+	
+	@Test
+	public void testarGetValorMedianoInserindoValoresReais() {
+		//Arrumar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("2");
+		colecao.add("5.7");
+		colecao.add("14.4");
+		colecao.add("35");
+		
+		//Agir
+		o.inserirColecao(colecao);
+		
+		//Afirmar
+		assertEquals(10.05, o.getValorMediano());
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void testarGetValorMedianoInserindoValoresNulos() {
+		//Arrumar
+		Collection<String> colecao = null;
+		
+		//Agir
+		o.inserirColecao(colecao);
 	}
 	
 	@After

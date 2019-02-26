@@ -28,10 +28,16 @@ public interface IOrdenador {
 	public double getMaiorValor();
 	
 	/**
-	 * 
+	 * Metodo que deve retornar a média dos valores inseridos na coleção
 	 * @return valorMedios
 	 */
 	public double getValorMedio();
+	
+	/**
+	 * Metodo que deve retornar o valor do meio, ou a soma dos dois valores do meio da coleção (Size impar/ Size par)
+	 * @return valorMediano
+	 */
+	public double getValorMediano();
 	
 	
 }

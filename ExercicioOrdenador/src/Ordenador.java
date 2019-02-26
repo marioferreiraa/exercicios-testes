@@ -5,10 +5,12 @@ public class Ordenador implements IOrdenador{
 	double maiorValor;
 	double menorValor;
 	double valorMedio;
+	double valorMediano;
 
 	@Override
 	public void inserirColecao(Collection<String> pColecao) {
 		double valorAcumulado = 0;
+		int colSize = pColecao.size();
 		try {
 			for(String valor : pColecao) {
 				
@@ -25,14 +27,21 @@ public class Ordenador implements IOrdenador{
 				}
 				valorAcumulado += valorDouble;
 			}	
-			valorMedio = valorAcumulado / pColecao.size();
+			valorMedio = valorAcumulado / colSize;
+			
+			if(pColecao.size() % 2 != 0) {
+				valorMediano = Double.parseDouble((String) pColecao.toArray()[(int)(0+colSize)/2]);
+			}else {
+				double v1 = Double.parseDouble((String) pColecao.toArray()[colSize/2 - 1]);
+				double v2 = Double.parseDouble((String) pColecao.toArray()[(colSize/2)]);
+				valorMediano = (v1 + v2) / 2;
+			}
+			
 		}catch(NumberFormatException n) {
 			System.err.println("InserirColecao - Excessão de Erro na formatação de Número capturada\n");
 		}catch (NullPointerException e) {
 			System.err.println("InserirColecao - Excessão de dados nulos capturada\n");
 		}
-		
-		
 	}
 	
 	@Override
@@ -71,6 +80,11 @@ public class Ordenador implements IOrdenador{
 	@Override
 	public double getValorMedio() {
 		return this.valorMedio;
+	}
+	
+	@Override
+	public double getValorMediano() {
+		return this.valorMediano;
 	}
 
 }
