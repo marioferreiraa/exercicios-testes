@@ -110,5 +110,97 @@ public class TesteOrdenador {
 		//Agir
 		o.informarValor(null);
 	}
+	
+	@Test
+	public void testarGetMenorValorInserindoColecao() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("10");
+		colecao.add("20");
+		colecao.add("30");
+		
+		//Agir
+		o.inserirColecao(colecao);
+		
+		//Afirmar
+		assertEquals(10, o.getMenorValor());
+	}
+	
+	@Test
+	public void testarGetMenorValorInserindoColecaoEValorAleatório() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("40");
+		colecao.add("19");
+		colecao.add("20");
+		String valAleatorio = "1.7";
+		
+		//Agir
+		o.inserirColecao(colecao);
+		o.informarValor(valAleatorio);
+		
+		//Afirmar
+		assertEquals(1.7, o.getMenorValor());
+		
+	}
+	
+	@Test
+	public void testarGetMenorValorEnviandoParametrosIguais() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("10");
+		colecao.add("10");
+		colecao.add("10");
+		String valAleatorio = "10";
+		
+		//Agir
+		o.inserirColecao(colecao);
+		o.informarValor(valAleatorio);
+		
+		//Afirmar
+		assertEquals(10, o.getMenorValor());
+	}
+	
+	@Test
+	public void testarGetMenorValorInserindoValorAleatorio() {
+		//Arranjar
+		String valAleatorio = "1000";
+		String valAleatorio2 = "1001";
+		String valAleatorio3 = "1002";
+		String valAleatorio4 = "4";
+		
+		//Agir
+		o.informarValor(valAleatorio);
+		o.informarValor(valAleatorio2);
+		o.informarValor(valAleatorio3);
+		o.informarValor(valAleatorio4);
+		
+		//Afirmar
+		assertEquals(4, o.getMenorValor());
+	}
+	
+	@Test
+	public void testarGetMenorValorInserindoDadosInvalidos() {
+		//Arranjar
+		String valAleatorio = "Abobora";
+		
+		//Agir
+		o.informarValor(valAleatorio);
+		
+		//Afirmar
+		assertEquals(0.0, o.getMenorValor());
+	}
+	
+	@Test
+	public void testarGetMenorValorInserindoDadosNulos() {
+		//Arranjar
+		String valAleatorio = null;
+		
+		//Agir
+		o.informarValor(valAleatorio);
+		
+		//Afirmar
+		assertEquals(0.0, o.getMenorValor());
+	}
 
 }

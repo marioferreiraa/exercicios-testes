@@ -15,5 +15,11 @@ public interface IOrdenador {
 	 */
 	public void informarValor(String pValor);
 	
+	/**
+	 * Metodo que deve retornar o menor valor armazenado.
+	 * @return
+	 */
+	public double getMenorValor();
+	
 	
 }
