@@ -9,13 +9,16 @@ public class Ordenador implements IOrdenador{
 	public void inserirColecao(Collection<String> pColecao) {
 		try {
 			for(String valor : pColecao) {
+				
 				double valorDouble = Double.parseDouble(valor);
+				
+				menorValor = (menorValor == 0.0) ? valorDouble : menorValor;
+				
 				if(valorDouble > maiorValor){
 					maiorValor = valorDouble;
 				}
-				if(menorValor == 0.0) {
-					menorValor = valorDouble;
-				}else if(valorDouble < menorValor) {
+				
+				if(valorDouble < menorValor) {
 					menorValor = valorDouble;
 				}
 			}	
@@ -31,17 +34,19 @@ public class Ordenador implements IOrdenador{
 	@Override
 	public void informarValor (String pValor) {
 		try {
+			
 			double valorConvertido = Double.parseDouble(pValor); 
+			
+			menorValor = (menorValor == 0.0) ? valorConvertido : menorValor;
 			
 			if(valorConvertido > maiorValor) {
 				maiorValor = valorConvertido;
 			}
 			
-			if(menorValor == 0.0) {
-				menorValor = valorConvertido;
-			}else if(valorConvertido < menorValor){
+			if(valorConvertido < menorValor){
 				menorValor = valorConvertido;
 			}
+			
 		}catch(NumberFormatException n) {
 			System.err.println("informarValor - Excessão de Erro na formatação de Número capturada\n");
 		}catch (NullPointerException e) {
