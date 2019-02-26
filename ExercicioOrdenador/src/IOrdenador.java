@@ -17,15 +17,21 @@ public interface IOrdenador {
 	
 	/**
 	 * Metodo que deve retornar o menor valor armazenado.
-	 * @return
+	 * @return menorValor
 	 */
 	public double getMenorValor();
 	
 	/**
 	 * Metodo que deve retornar o maior valor armazenado.
-	 * @return
+	 * @return maiorValor
 	 */
 	public double getMaiorValor();
+	
+	/**
+	 * 
+	 * @return valorMedios
+	 */
+	public double getValorMedio();
 	
 	
 }

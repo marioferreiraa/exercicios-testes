@@ -295,6 +295,71 @@ public class TesteOrdenador {
 		assertEquals(0.0, o.getMaiorValor());
 	}
 	
+	@Test
+	public void testarGetValorMedioInserindoDadosInteiros() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+			colecao.add("2");
+			colecao.add("4");
+			
+		//Agir
+		o.inserirColecao(colecao);
+		
+		//Afirmar
+		assertEquals(3, o.getValorMedio());
+			
+	}
+	
+	@Test
+	public void testarGetValorMedioInserindoDadosReais() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("3.5");
+		colecao.add("1.5");
+		
+		//Agir
+		o.inserirColecao(colecao);
+		
+		//Afirmar
+		assertEquals(2.5, o.getValorMedio());
+	}
+	
+	@Test 
+	public void testarGetValorMedioInserindoDadosInvalidos() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("a");
+		colecao.add("b");
+		
+		//Agir
+		o.inserirColecao(colecao);
+	}
+	
+	@Test 
+	public void testarGetValorMedioInserindoDadosNulos() {
+		//Arranjar
+		Collection<String> colecao = null;
+		
+		//Agir
+		o.inserirColecao(colecao);
+	}
+	
+	@Test
+	public void testarGetValorMedioComNumeroAleatorio() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("2");
+		colecao.add("8");
+		String valAleatorio = "2";
+		
+		//Agir
+		o.inserirColecao(colecao);
+		o.informarValor(valAleatorio);
+		
+		//Afirmar
+		assertNotEquals(4, o.valorMedio);
+	}
+	
 	@After
 	public void destruirObjetoPersistido() {
 		o = null;

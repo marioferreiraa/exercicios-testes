@@ -4,9 +4,11 @@ public class Ordenador implements IOrdenador{
 	
 	double maiorValor;
 	double menorValor;
+	double valorMedio;
 
 	@Override
 	public void inserirColecao(Collection<String> pColecao) {
+		double valorAcumulado = 0;
 		try {
 			for(String valor : pColecao) {
 				
@@ -21,7 +23,9 @@ public class Ordenador implements IOrdenador{
 				if(valorDouble < menorValor) {
 					menorValor = valorDouble;
 				}
+				valorAcumulado += valorDouble;
 			}	
+			valorMedio = valorAcumulado / pColecao.size();
 		}catch(NumberFormatException n) {
 			System.err.println("InserirColecao - Excessão de Erro na formatação de Número capturada\n");
 		}catch (NullPointerException e) {
@@ -62,6 +66,11 @@ public class Ordenador implements IOrdenador{
 	@Override
 	public double getMaiorValor() {
 		return this.maiorValor;
+	}
+	
+	@Override
+	public double getValorMedio() {
+		return this.valorMedio;
 	}
 
 }
