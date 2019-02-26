@@ -14,8 +14,20 @@ public class Ordenador implements IOrdenador{
 					maiorValor = valorDouble;
 				}
 			}	
-		}catch(NumberFormatException n) {
+		}catch(Exception n) {
 			n.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void informarValor(String pValor) {
+		try {
+			double valorConvertido = Double.parseDouble(pValor); 
+			if(valorConvertido > maiorValor) {
+				maiorValor = valorConvertido;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

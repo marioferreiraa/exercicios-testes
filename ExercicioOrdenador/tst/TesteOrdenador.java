@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -44,6 +45,12 @@ public class TesteOrdenador {
 	}
 	
 	@Test
+	public void testarInserindoCollectionNulo() {
+		//Agir
+		o.inserirColecao(null);
+	}
+	
+	@Test
 	public void testarInserindoValoresNaoNumericos() {
 		//Arranjar
 		Collection<String> colecao = new ArrayList<String>();
@@ -53,7 +60,55 @@ public class TesteOrdenador {
 		
 		//Agir
 		o.inserirColecao(colecao);
-
+	}
+	
+	@Test
+	public void testarinformarValorMaior() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("20");
+		colecao.add("30");
+		colecao.add("40");
+		String valor = "100";
+		
+		//Agir
+		o.inserirColecao(colecao);
+		o.informarValor(valor);
+		
+		//Afirmar
+		assertEquals(100, o.maiorValor);
+	}
+	
+	@Test
+	public void testarinformarValorMenor() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("70");
+		colecao.add("80");
+		colecao.add("90.4");
+		String valor = "10";
+		
+		//Agir
+		o.inserirColecao(colecao);
+		o.informarValor(valor);
+		
+		//Afirmar
+		assertNotEquals(10,o.maiorValor);
+	}
+	
+	@Test
+	public void testarinformarValorComDadoInvalido() {
+		//Arranjar
+		String valor = "a";
+		
+		//Agir
+		o.informarValor(valor);
+	}
+	
+	@Test
+	public void testarinformarValorComParametroVazio() {		
+		//Agir
+		o.informarValor(null);
 	}
 
 }
