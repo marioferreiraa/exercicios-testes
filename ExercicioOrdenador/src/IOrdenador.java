@@ -21,5 +21,11 @@ public interface IOrdenador {
 	 */
 	public double getMenorValor();
 	
+	/**
+	 * Metodo que deve retornar o maior valor armazenado.
+	 * @return
+	 */
+	public double getMaiorValor();
+	
 	
 }

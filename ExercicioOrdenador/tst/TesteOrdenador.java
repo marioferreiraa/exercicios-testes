@@ -202,5 +202,102 @@ public class TesteOrdenador {
 		//Afirmar
 		assertEquals(0.0, o.getMenorValor());
 	}
+	
+	@Test
+	public void testarGetMaiorValorInserindoColecao() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("10");
+		colecao.add("20");
+		colecao.add("30");
+		
+		//Agir
+		o.inserirColecao(colecao);
+		
+		//Afirmar
+		assertEquals(30, o.getMaiorValor());
+	}
+	
+	@Test
+	public void testarGetMaiorValorInserindoColecaoEValorAleatório() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("40");
+		colecao.add("19");
+		colecao.add("20");
+		String valAleatorio = "1.7";
+		
+		//Agir
+		o.inserirColecao(colecao);
+		o.informarValor(valAleatorio);
+		
+		//Afirmar
+		assertEquals(40, o.getMaiorValor());
+		
+	}
+	
+	@Test
+	public void testarGetMaiorValorEnviandoParametrosIguais() {
+		//Arranjar
+		Collection<String> colecao = new ArrayList<String>();
+		colecao.add("10");
+		colecao.add("10");
+		colecao.add("10");
+		String valAleatorio = "10";
+		
+		//Agir
+		o.inserirColecao(colecao);
+		o.informarValor(valAleatorio);
+		
+		//Afirmar
+		assertEquals(10, o.getMaiorValor());
+	}
+	
+	@Test
+	public void testarGetMaiorValorInserindoValorAleatorio() {
+		//Arranjar
+		String valAleatorio = "1000";
+		String valAleatorio2 = "1001";
+		String valAleatorio3 = "1002";
+		String valAleatorio4 = "4";
+		
+		//Agir
+		o.informarValor(valAleatorio);
+		o.informarValor(valAleatorio2);
+		o.informarValor(valAleatorio3);
+		o.informarValor(valAleatorio4);
+		
+		//Afirmar
+		assertEquals(1002, o.getMaiorValor());
+	}
+	
+	@Test
+	public void testarGetMaiorValorInserindoDadosInvalidos() {
+		//Arranjar
+		String valAleatorio = "Abobora";
+		
+		//Agir
+		o.informarValor(valAleatorio);
+		
+		//Afirmar
+		assertEquals(0.0, o.getMaiorValor());
+	}
+	
+	@Test
+	public void testarGetMaiorValorInserindoDadosNulos() {
+		//Arranjar
+		String valAleatorio = null;
+		
+		//Agir
+		o.informarValor(valAleatorio);
+		
+		//Afirmar
+		assertEquals(0.0, o.getMaiorValor());
+	}
+	
+	@After
+	public void destruirObjetoPersistido() {
+		o = null;
+	}
 
 }

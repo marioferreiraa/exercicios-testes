@@ -58,5 +58,10 @@ public class Ordenador implements IOrdenador{
 	public double getMenorValor() {
 		return this.menorValor;
 	}
+	
+	@Override
+	public double getMaiorValor() {
+		return this.maiorValor;
+	}
 
 }
